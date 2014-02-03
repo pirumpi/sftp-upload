@@ -4,13 +4,12 @@ sftp-upload allows node to upload the content of a folder to a remote server uti
 
 ## Getting Started
 This module depends on: `ssh2`  and `scp2`
-
+```bash
 	npm install sftp-upload
+```
 
-
-#### Example
-'''js
-	
+### Example
+```js
     var sftp = require('sftp-upload'),
         fs = require('fs');
         
@@ -32,10 +31,9 @@ This module depends on: `ssh2`  and `scp2`
         console.log('Upload Completed');
     })
     .upload();
-    
-'''
+```
 
-#### Events
+### Events
 
 - connect
 - uploading ({file: currentFile, percent: percentage left})
