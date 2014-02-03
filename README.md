@@ -8,6 +8,15 @@ This module depends on: `ssh2`  and `scp2`
 	npm install sftp-upload
 ```
 
+You must configure the sftp before attempting to upload files. The following parameters are required in the sftp.config object.
+
+- host: Remote server IP/Hostname.
+- port: sftp port, 22 by default.
+- username: sftp server's username.
+- path: Location of the directory that is going to be uploaded to the server.
+- remoteDir: Remote directory where files are going to be uploaded.
+- privateKey: RSA key, you must upload a public key to the remote server before attempting to upload any content.
+
 ### Example
 ```js
     var sftp = require('sftp-upload'),
