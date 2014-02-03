@@ -1,6 +1,6 @@
 {
   "name": "sftp-upload",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Upload an entire directory to a remote sftp server.",
   "main": "./lib/sftp-upload.js",
   "scripts": {
@@ -21,6 +21,8 @@
     "url": "https://github.com/pirumpi/sftp-upload/issues"
   },
   "dependencies": {
-    "scp2": "~0.1.4"
+    "scp2": "~0.1.4",
+    "node.extend": "~1.0.9",
+    "async": "~0.2.10"
   }
 }
