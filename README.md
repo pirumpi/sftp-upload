@@ -19,17 +19,19 @@ You must configure the sftp before attempting to upload files. The following par
 
 ### Example
 ```js
-    var sftp = require('sftp-upload'),
+    var Sftp = require('sftp-upload'),
         fs = require('fs');
-        
-    sftp.config({
+    
+    var options = {
         host:'localhost',
         username:'root',
         path: '/',
         remoteDir: '/tempDir',
         privateKey: fs.readFileSync('privateKey_rsa')
-    })
-    .on('error', function(err){
+    },
+    sftp = new Sftp(options);
+    
+    sftp.on('error', function(err){
         throw err;
     })
     .on('uploading', function(pgs){
