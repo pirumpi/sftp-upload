@@ -16,29 +16,31 @@ You must configure the sftp before attempting to upload files. The following par
 - **path:** Location of the directory that is going to be uploaded to the server.
 - **remoteDir:** Remote directory where files are going to be uploaded.
 - **privateKey:** RSA key, you must upload a public key to the remote server before attempting to upload any content.
+- **passphrase:** RSA key passphrase. (Optional, should be stored in external file)
 
 ### Example
 ```js
-    var Sftp = require('sftp-upload'),
+    var SftpUpload = require('sftp-upload'),
         fs = require('fs');
-    
+
     var options = {
         host:'localhost',
         username:'root',
         path: '/',
         remoteDir: '/tempDir',
-        privateKey: fs.readFileSync('privateKey_rsa')
+        privateKey: fs.readFileSync('privateKey_rsa'),
+	passphrase: fs.readFileSync('privateKey_rsa.passphrase')
     },
-    sftp = new Sftp(options);
-    
-    sftp.on('error', function(err){
+    sftp = new SftpUpload(options);
+
+    sftp.on('error', function(err) {
         throw err;
     })
-    .on('uploading', function(pgs){
-        console.log('Uploading', pgs.file);
-        console.log(pgs.percent+'% completed');
+    .on('uploading', function(progress) {
+        console.log('Uploading', progress.file);
+        console.log(progress.percent+'% completed');
     })
-    .on('completed', function(){
+    .on('completed', function() {
         console.log('Upload Completed');
     })
     .upload();
@@ -47,11 +49,11 @@ You must configure the sftp before attempting to upload files. The following par
 ### Events
 
 - connect
-- uploading ({file: currentFile, percent: percentage left})
+- uploading ({file: currentFile, percent: percentage completed})
 - error (err)
 - completed
 
-## License 
+## License
 
 (The BSD License)
 
