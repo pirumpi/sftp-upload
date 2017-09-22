@@ -29,7 +29,7 @@ You must configure the sftp before attempting to upload files. The following par
         path: '/',
         remoteDir: '/tempDir',
         privateKey: fs.readFileSync('privateKey_rsa'),
-				passphrase: fs.readFileSync('privateKey_rsa.passphrase')
+		passphrase: fs.readFileSync('privateKey_rsa.passphrase')
     },
     sftp = new SftpUpload(options);
 
