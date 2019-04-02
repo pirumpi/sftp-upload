@@ -15,6 +15,7 @@ You must configure the sftp before attempting to upload files. The following par
 - **username:** sftp server's username.
 - **path:** Location of the directory that is going to be uploaded to the server.
 - **remoteDir:** Remote directory where files are going to be uploaded.
+- **excludedFolders:** Array of directory names that won't be uploaded.
 - **privateKey:** RSA key, you must upload a public key to the remote server before attempting to upload any content.
 - **passphrase:** RSA key passphrase. (Optional, should be stored in external file)
 
@@ -28,6 +29,7 @@ You must configure the sftp before attempting to upload files. The following par
         username:'root',
         path: '/',
         remoteDir: '/tempDir',
+        excludedFolders: ['./.git', 'node_modules'],
         privateKey: fs.readFileSync('privateKey_rsa'),
 	passphrase: fs.readFileSync('privateKey_rsa.passphrase')
     },
