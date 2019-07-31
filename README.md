@@ -13,7 +13,7 @@ You must configure the sftp before attempting to upload files. The following par
 - **host:** Remote server IP/Hostname.
 - **port:** sftp port, 22 by default.
 - **username:** sftp server's username.
-- **path:** Location of the directory that is going to be uploaded to the server.
+- **path:** Path to a directory or a file that is going to be uploaded to the server. String or Array.
 - **remoteDir:** Remote directory where files are going to be uploaded.
 - **excludedFolders:** Array of directory names that won't be uploaded.
 - **privateKey:** RSA key, you must upload a public key to the remote server before attempting to upload any content.
