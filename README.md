@@ -14,6 +14,7 @@ You must configure the sftp before attempting to upload files. The following par
 - **port:** sftp port, 22 by default.
 - **username:** sftp server's username.
 - **path:** Path to a directory or a file that is going to be uploaded to the server. String or Array.
+- **basePath:** Optional. E.g. in case if you have `path: ['./public/css','./public/js']` but want to move them directly to a `remoteDir` without creating `public` directory, you may also set `basePath: './public'` to ignore this part of the path. If your `path` is a string path to a directory, it's set as a `basePath` by default.
 - **remoteDir:** Remote directory where files are going to be uploaded.
 - **excludedFolders:** Array of directory names that won't be uploaded.
 - **privateKey:** RSA key, you must upload a public key to the remote server before attempting to upload any content.
