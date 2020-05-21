@@ -1,6 +1,6 @@
 {
   "name": "sftp-upload",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Upload an entire directory to a remote sftp server.",
   "main": "./lib/sftp-upload.js",
   "scripts": {
