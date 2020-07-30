@@ -20,6 +20,7 @@ You must configure the sftp before attempting to upload files. The following par
 - **exclude:** Array of specific relative file names that won't be uploaded.
 - **privateKey:** RSA key, you must upload a public key to the remote server before attempting to upload any content.
 - **passphrase:** RSA key passphrase. (Optional, should be stored in external file)
+- **password:** When using username password only authentication (Optional)
 - **dryRun:** Just list files to be uploaded, don't actually send anything to the server.
 
 ### Example
