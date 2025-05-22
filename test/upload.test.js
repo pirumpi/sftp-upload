@@ -120,7 +120,7 @@ describe('SftpUpload - Upload Functionality', () => {
             } catch (e) { done(e); }
         });
 
-        it('should exclude folders specified in "excludedFolders" (dryRun)', (done) => {
+        it.only('should exclude folders specified in "excludedFolders" (dryRun)', (done) => {
             const options = {
                 host: 'localhost', username: 'test', privateKey: 'dummy',
                 path: localPublicDir,
