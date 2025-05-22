@@ -21,7 +21,8 @@ You must configure the sftp before attempting to upload files. The following par
 - **privateKey:** RSA key, you must upload a public key to the remote server before attempting to upload any content.
 - **passphrase:** RSA key passphrase. (Optional, should be stored in external file)
 - **password:** When using username password only authentication (Optional)
-- **dryRun:** Just list files to be uploaded, don't actually send anything to the server.
+- **removeFiles:** Optional. An array of file paths relative to `remoteDir` that should be deleted from the SFTP server. Example: `['old_file.txt', 'logs/jan.log']`. Used by the `deleteFiles()` method.
+- **dryRun:** Just list files to be uploaded, don't actually send anything to the server. Also applies to `deleteFiles()`.
 
 ### Example
 ```js
@@ -60,6 +61,26 @@ You must configure the sftp before attempting to upload files. The following par
 - uploading ({file: currentFile, percent: percentage completed})
 - error (err)
 - completed
+
+### deleteFiles() Method
+
+The `deleteFiles()` method attempts to delete files specified in the `removeFiles` option from the SFTP server.
+
+```javascript
+// Assuming 'sftp' is an instance of SftpUpload configured with 'removeFiles'
+sftp.deleteFiles();
+```
+
+This method will:
+- Read the list of files from the `removeFiles` array in the instance's configuration.
+- Attempt to delete each file from the `remoteDir` on the SFTP server.
+- Respect the `dryRun` option (if `true`, it will log files to be deleted without actually deleting them).
+
+**Events related to `deleteFiles()`:**
+
+- `error`: Emitted if an error occurs during the deletion of a specific file (e.g., file not found, permissions issue). The error object will contain details about the file and the error. The process does not stop on such errors.
+- `filedeleted`: Emitted after a file has been successfully deleted (or would be deleted in `dryRun` mode). The event passes the full remote path of the file.
+- `deletecompleted`: Emitted after all files in the `removeFiles` list have been processed.
 
 ## License
 
